@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { PlayIcon, StopIcon, ForwardIcon } from "@heroicons/vue/16/solid";
+import { ArrowPathIcon } from "@heroicons/vue/24/outline";
 
 const emit = defineEmits<{
   (e: "nextSection"): void;
@@ -44,19 +46,31 @@ const resetTimer = () => {
 };
 </script>
 <template>
-  <div
-    class="flex flex-col max-w-[90vw] w-fit min-w-[50vw] bg-zinc-200 rounded-xl min-h-30 h-fit"
-  >
-    <div>
+  <div class="flex flex-col gap-5 items-center">
+    <span class="text-4xl font-semibold tracking-widest">
       {{ formatTime() }}
-    </div>
+    </span>
 
-    <div>
-      <button @click="toggleTimer" class="button">
-        {{ timerRef ? "Stop" : "Start" }}
+    <div class="gap-3 flex">
+      <button
+        @click="toggleTimer"
+        class="button flex justify-center items-center"
+      >
+        <StopIcon v-if="timerRef" class="size-7"></StopIcon>
+        <PlayIcon v-else="timerRef" class="size-7"></PlayIcon>
       </button>
-      <button class="button" @click="resetTimer">Reset</button>
-      <button class="button" @click="$emit('nextSection')">Next</button>
+      <button
+        @click="resetTimer"
+        class="button flex justify-center items-center"
+      >
+        <ArrowPathIcon class="size-7"></ArrowPathIcon>
+      </button>
+      <button
+        class="button flex justify-center items-center"
+        @click="$emit('nextSection')"
+      >
+        <ForwardIcon class="size-7"></ForwardIcon>
+      </button>
     </div>
   </div>
 </template>

@@ -15,10 +15,14 @@ const info = ref<PomodoroInfo>({
 });
 </script>
 <template>
-  <PomodoroTimer
-    :seconds="info.workingSeconds"
-    @next-section="console.log('next section')"
-  />
+  <div
+    class="max-w-[90vw] w-fit min-w-[50vw] bg-zinc-200 rounded-xl min-h-30 h-fit p-4"
+  >
+    <PomodoroTimer
+      :seconds="info.workingSeconds"
+      @next-section="console.log('next section')"
+    />
+  </div>
 </template>
 
 <style scoped></style>
